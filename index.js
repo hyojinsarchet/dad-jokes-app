@@ -1,18 +1,23 @@
 // require all our dependencies
 const express = require('express')
-
+const hbs = require('hbs')
 
 // create and set up our express app
 const app = express()
 
-
-
-
+// configure express to use hbs
+app.set('view engine', 'hbs')
 
 // define route
 // This is to see/check if it's connected to server well
+// app.get('/', (req, res) => {
+//     res.send('Hello World!')
+// })
+
+// Define our rount, render main page
+//localhost:3000
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.render('index')
 })
 
 
