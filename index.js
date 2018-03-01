@@ -1,6 +1,7 @@
 // require all our dependencies
 const express = require('express')
 const hbs = require('hbs')
+const Joke = require('./models/Joke')
 
 // create and set up our express app
 const app = express()
@@ -17,9 +18,10 @@ app.set('view engine', 'hbs')
 // Define our rount, render main page
 //localhost:3000
 app.get('/', (req, res) => {
-    res.render('index')
+    Joke.find({}).then(jokes => {
+        res.render('index', {jokes})
+    })
 })
-
 
 // start our server
 app.listen(3000, () => {
