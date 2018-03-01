@@ -1,10 +1,9 @@
 // importing our dependencies
-const express = require('express')
-const router = express.Router()
-const Joke = require('../model/Joke')
+const express = require("express");
+const router = express.Router();
+const Joke = require("../models/Joke");
 
-// define out routes
-
+// Define our routes
 
 // create new joke: '/'
 router.post("/", (req, res) => {
@@ -13,12 +12,12 @@ router.post("/", (req, res) => {
   });
 });
 
-// get new view for a new jokes
-router.get('/new', (req, res) => {
-    res.render('joke/new')
-})
+// get new view for a new joke
+router.get("/new", (req, res) => {
+  res.render("joke/new");
+});
 
-// get a joke by its id: '/:id'
+// get a joke by it's id: '/:id'
 router.get("/:id", (req, res) => {
   Joke.findOne({ _id: req.params.id }).then(joke => {
     res.render("joke/show", joke);
@@ -27,9 +26,7 @@ router.get("/:id", (req, res) => {
 
 // update a joke by id: '/:id'
 
+// delete a joke by id: '/:id
 
-// delete a joke by id: '/:id'
-
-
-// export out router
-module.exports =router
+// export our router
+module.exports = router;
